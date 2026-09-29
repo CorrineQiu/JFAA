@@ -42,17 +42,18 @@ experiment:
     reprob: 0.0
     resolution: 384
 
-    # In the sampler formula, point=1.0 means start_frame - anticipation_time.
-    # This matches the report protocol: no frames after t_s - T_a are used.
+    # Match the historical runs and upstream released EK100 sampling settings.
+    # With this sampler, point=0 anchors at stop_frame - anticipation_time;
+    # point=1 anchors at start_frame - anticipation_time.
     train_anticipation_point:
-      - 1.0
-      - 1.0
+      - 0.0
+      - 0.25
     train_anticipation_time_sec:
       - 0.25
       - 1.75
     val_anticipation_point:
-      - 1.0
-      - 1.0
+      - 0.0
+      - 0.0
 
   optimization:
     num_epochs: 30
